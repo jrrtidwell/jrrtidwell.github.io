@@ -1,52 +1,36 @@
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="styles.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-</script>
-<script>
-  $( document ).ready(function() {
-        $.getJSON("itebooks.json", function(data) 
-        {  
-          $.each(data.Books, function (i) {
-            if(i<10)
-            {
-            $("#container").append('<div class = "row"><div class="image"><img src="'+data.Books[i].Image+'" class="imageurl"/></div><div class="content"> <h2 class="mainheading">'+data.Books[i].Title+'</h2><h4 class="subheading">'+data.Books[i].SubTitle+'</h4>ISBN : <span class="isbn">'+data.Books[i].isbn+'</span><p class="description">'+data.Books[i].Description+'</p></div></div><hr class="divider">');}
-          });
-        } );
-
-             
-})
-</script>
-<style>
-body {
+<!doctype html>
+<html lang="en-US">
+   <head>
+      <link rel="stylesheet" type="text/css" href="style1.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   </head>
+   <style>
+   {
 	background-image: url("https://images-na.ssl-images-amazon.com/images/I/11dYjperKML._SX331_BO1,204,203,200_.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-}          
-            .book {
-                display: flex;
-                 margin-bottom: 15px;
-            }
-
-            .book img {
-                 margin-right: 30px;
-
-            }
-
-            .book-info {
-                width: 800px;
-            }
-            
-            .boxed {
-                border: 5px solid lightblue;
-                padding: 5px;
-                background: white;
-            }
-            
-</style>
-</head>
-<body>
-   
-</body>
+}       
+   </style>
+   <body>		
+        <nav class="topnav">
+			<a href="index.html">Home</a>
+			<a class="active" href="milestone1.html">Milestone 1</a>
+		</nav>
+		<script>
+			$(function(){
+				$.getJSON("http://it-ebooks-api.info/v1/search/modern%20web",function(data){
+					var bookInfo='';
+					$.each($(data.Books), function(key,book){
+						bookInfo = '<div class="books">';
+						bookInfo += '<img src="'+book.Image+'" class="book-image" />';
+						bookInfo += '<h1 class="title">'+book.Title+'</h1>';
+						bookInfo += '<p>'+book.SubTitle+'</p>';
+						bookInfo += '<p> Description: '+book.Description+'</p>';
+						bookInfo += '</div>'
+						$('#eList').append(bookInfo);
+					});
+				})
+			})
+		</script>
+   </body>
 </html>
