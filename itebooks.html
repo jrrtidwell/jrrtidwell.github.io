@@ -1,17 +1,50 @@
-<!doctype html>
 <html lang="en-US">
    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>
+         Brindle Coding Co.
+      </title>
       <link rel="stylesheet" type="text/css" href="style1.css"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    </head>
-   <style>
-   {
-	background-image: url("https://images-na.ssl-images-amazon.com/images/I/11dYjperKML._SX331_BO1,204,203,200_.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-}       
-   </style>
-   <body>		
+   <body>
+      <header class="header">
+			<h1>brindlecode.com</h1>
+			<h3>A list of IT e-books.</h3>
+		</header>
+		
+        <nav class="topnav">
+			<a href="index.php">Home</a>
+			<a class="active" href="milestone1.html">Milestone 1</a>
+			<a href="underconstruction.php">Milestone 2</a>
+			<!--<a href="underconstruction.php">Milestone 3</a>
+			<a href="underconstruction.php">Milestone 4</a>
+			<a href="underconstruction.php">Inndividual Project</a>
+			<a href="underconstruction.php">Term Project</a> -->
+		</nav>
+		
+		<div class="content">
+			<h1>Milestone 1</h1>
+			<ul>
+				<li>
+					<a href="it_ebooks_list.html">Milestone 1a</a>
+				</li>
+				<li>
+					<a href="it_ebooks_single.html">Milestone 1b</a>
+				</li>
+				<li>
+					<a href="googlebooks_list.html">Milestone 1c</a>
+				</li>
+				<li>
+					<a href="googlebooks_single.html">Milestone 1d</a>
+				</li>
+			</ul>
+		</div>
+	  
+		<div id="eList">
+			
+		</div>
 		<script>
 			$(function(){
 				$.getJSON("http://it-ebooks-api.info/v1/search/modern%20web",function(data){
