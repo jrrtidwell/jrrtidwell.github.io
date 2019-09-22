@@ -1,8 +1,7 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="styles.css">
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<ul class="breadcrumb" style="list-style-type:none;">
 <style>
 body {
 	background-image: url("https://images-na.ssl-images-amazon.com/images/I/11dYjperKML._SX331_BO1,204,203,200_.jpg");
@@ -16,15 +15,23 @@ body {
 	<div>
 			<h3>IT Ebooks Search Results</h3>
 	</div>
+	<<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
 	<script>
 	$(document).ready(function(){
 		$.getJSON("http://it-ebooks-api.info/v1/search/modern%20web",function(data){
 			var book_data='';
 			console.log(data);
 			$.each(data.Books, function(key,book){
-				book_data = '<div class="books">'; book_data += '<img src="'+book.Image+'" class="book-image"/>';book_data += '<h1 class="title">'+book.Title+'</h1>';book_data += '<p>'+book.SubTitle+'</p>';book_data += '<p> Description: '+book.Description+'</p>';book_data += '<p> ISBN: '+book.isbn+'</p>';book_data += '</div>'
+				book_data = '<div class="books">';
+				book_data += '<img src="'+book.Image+'" class="book-photo" />';
+				book_data += '<h1 class="book-title">'+book.Title+'</h1>';
+				book_data += '<p>'+book.SubTitle+'</p>';
+				book_data += '<p> Description: '+book.Description+'</p>';
+				book_data += '<p> ISBN: '+book.isbn+'</p>';
+				book_data += '</div>'
 				$('#target').append(book_data);
 			});
+			
 		})
 	})			
 	</script>
