@@ -1,16 +1,14 @@
 <html lang="en-US">
    <head>
       <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
       <link rel="stylesheet" type="text/css" href="style1.css"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	  <style>
 	  body {
 	  background-image: url("https://images-na.ssl-images-amazon.com/images/I/11dYjperKML._SX331_BO1,204,203,200_.jpg");
 	  background-repeat: no-repeat;
 	  background-size: cover;
-     }
+      }
 	 </style>
    </head>
    <body>
@@ -21,6 +19,8 @@
         <nav class="topnav">
 			<a href="index.html">Home</a>
 			<a class="active" href="milestone1.html">Milestone 1</a>
+
+
 		</nav>
 		
 		<div class="content">
@@ -42,25 +42,21 @@
 					<a href="openlibraryresults.html">Open Library Results</a>
 			</ul>
 		</div>
-	  <br style = “line-height:2;”>
+	    <br style = “line-height:2;”>
 		<div id="eList">
 			
 		</div>
-		<script>
-			$(function(){
-				$.getJSON("http://it-ebooks-api.info/v1/search/modern%20web",function(data){
-					var bookInfo='';
-					$.each($(data.Books), function(key,book){
-						bookInfo = '<div class="books">';
-						bookInfo += '<img src="'+book.Image+'" class="book-image" />';
-						bookInfo += '<h1 class="title">'+book.Title+'</h1>';
-						bookInfo += '<p>'+book.SubTitle+'</p>';
-						bookInfo += '<p> Description: '+book.Description+'</p>';
-						bookInfo += '</div>'
-						$('#eList').append(bookInfo);
-					});
-				})
-			})
-		</script>
-   </body>
+	<script>
+	$(document).ready(function(){
+		$.getJSON("http://it-ebooks-api.info/v1/book/2563063616",function(data){
+			var book_data='';
+			console.log(data);
+			$.each($(data), function(key,book){
+				book_data = '<div class="books">';book_data += '<p> --Error: '+book.Error+'</p>';book_data += '</div>'
+				$('#target').append(book_data);
+			});
+		})
+	})			
+	</script>
+	<div id="target"></div>
 </html>
